@@ -1,9 +1,15 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+import numpy as np
 
-G = nx.barabasi_albert_graph(10, 5)
+G = nx.barabasi_albert_graph(50000, 4)
 nx.draw_networkx(G, with_labels=True)
 
 import scipy as sp
 A = nx.adjacency_matrix(G)
 print(A.todense())
+np.savetxt('dataset_50k.txt',A.todense(),fmt="%s")
+
+new_data=np.loadtxt('dataset_50k.txt')
+print(new_data)
+new_data.shape
