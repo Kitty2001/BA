@@ -1,0 +1,12 @@
+import networkx.algorithms as nx
+import networkx as nkx
+import numpy as np
+G = nx.bipartite.gnmk_random_graph(800,3200,256000)
+nkx.draw_networkx(G, with_labels=True)
+
+import scipy as sp
+import numpy as np
+A = nkx.adjacency_matrix(G)
+print(A.todense())
+np.savetxt('Dataset_BP_4k.txt',A.todense(),fmt="%d")
+
