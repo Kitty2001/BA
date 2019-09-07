@@ -1,0 +1,9 @@
+import networkx as nx
+import matplotlib.pyplot as plt
+
+G = nx.barabasi_albert_graph(10, 5)
+nx.draw_networkx(G, with_labels=True)
+
+import scipy as sp
+A = nx.adjacency_matrix(G)
+print(A.todense())
