@@ -2,13 +2,27 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import numpy as np
 
-G = nx.barabasi_albert_graph(50000, 4)
-nx.draw_networkx(G, with_labels=True)
+G = nx.barabasi_albert_graph(10000, 4)
 
 import scipy as sp
 A = nx.adjacency_matrix(G)
 print(A.todense())
-np.savetxt('dataset_50k.txt',A.todense(),fmt="%s")
+ 
+b=nx.betweenness_centrality(G) 
+print(b) 
+
+c=nx.closeness_centrality(G)
+print(c)
+
+np.savetxt('BA_10k.txt',A.todense(),fmt="%s")
+
+f = open("BA_10k_betweenness.txt","w")
+f.write( str(b) )
+f.close()
+
+f = open("BA_10k_clossness.txt","w")
+f.write( str(c) )
+f.close()
 
 new_data=np.loadtxt('dataset_50k.txt')
 print(new_data)
